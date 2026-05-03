@@ -20,6 +20,7 @@
 
 ## Formula Samples
 - **Cleaning Risk Score :** =VALUE(SUBSTITUTE(SUBSTITUTE(transaction_raw!G2, "score:", ""), "risk-", ""))
+- **Populating the column :** =VLOOKUP(C2,CHOOSE({1,2},merchant_master!$B:$B,merchant_master!$A:$A),2,0)
 - **USD Exchange Rate Lookup :** =SUMIFS(exchange_rate!$C:$C,exchange_rate!$A:$A, B2,exchange_rate!$B:$B, E2)
 - **High Value Flag :** =IF(OR(AND(P2="APAC", L2>5000), AND(P2="EU", L2>6000), AND(P2="US", L2>7000)), 1, 0)
 - **High Risk Flag :** =IF(OR(G2 >= 70, ISNUMBER(SEARCH("chargeback", F2))), 1, 0)

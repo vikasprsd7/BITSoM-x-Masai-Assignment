@@ -90,7 +90,10 @@ HAVING (SUM(CASE WHEN t.status = 'Chargeback' THEN 1 ELSE 0 END) * 100.0 / COUNT
 ORDER BY chargeback_ratio_percent DESC;
 
 ### Result Summary
-
+- Eco Home is at **critical risk** with a **50% chargeback rate**.
+- Delta Travels follows with a high rate of 25%.
+- Alpha Mart and Beta Stores show identical rates of 9.09%. 
+- City Pharma is the **healthiest merchant** in the dataset, maintaining a **0% chargeback rate**.
 
 ## Q6 Find regions with average risk score above 50 and more than 20 transactions
 ### Query
@@ -105,6 +108,15 @@ HAVING AVG(risk_score_updated) > 50
    AND COUNT(*) > 20
 ORDER BY avg_risk_score DESC;
 
+### Result Summary
+The query didn’t return any results because no region had enough transactions to meet the requirement of more than 20.
+  - Two regions did have high average risk scores (above 50):
+  - APAC scored 67.54, but it only had 13 transactions.
+  - NOT FOUND scored 62.00, but it only had 9 transactions.
+  - Other regions like EU and US had just 4 transactions each, and their average risk scores were below 50.
+    
+**NOTE:** The rule was-**average risk score > 50 AND more than 20 transactions**;and no region met both conditions.
+
 ## Q7 Find users with 3 or more failed or chargeback transactions on the same day
 ### Query
 
@@ -117,6 +129,11 @@ WHERE status IN ('Failed E05 Timeout', 'Chargeback')
 GROUP BY user_id, txn_date
 HAVING COUNT(*) >= 3
 ORDER BY failed_or_chargeback_count DESC, txn_date;
+
+### Result Summary
+
+The data points to **User U008** as a case for close attention. 
+On March 5th, 2026, this user tried to make 4 transactions, but none were successful. Instead, there were 3 timeout failures and 1 chargeback.
 
 ## Q8 Show chargeback count, unique affected users, and chargeback amount by merchant
 ### Query
@@ -133,3 +150,9 @@ JOIN currency_rates cr
 WHERE t.status = 'Chargeback'
 GROUP BY t.merchant_name
 ORDER BY total_chargeback_amount_usd DESC;
+
+### Result Summary
+The **chargebacks during this period are spread out across different merchants**, not concentrated in one place.
+  - Eco Home had the biggest financial hit, with a single chargeback worth $6,649.00.
+  - Each chargeback came from a different user, which means these look like isolated cases rather than a coordinated attack by one person.
+  - Alpha Mart and Beta Stores both handle a lot of transactions, but each only had 1 chargeback.

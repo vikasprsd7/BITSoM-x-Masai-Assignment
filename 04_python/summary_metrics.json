@@ -1,0 +1,11 @@
+{
+    "total_ledger_records": 10,
+    "total_gateway_records": 9,
+    "ledger_duplicates": 0,
+    "gateway_duplicates": 0,
+    "missing_in_gateway_count": 2,
+    "missing_in_ledger_count": 1,
+    "amount_mismatch_count": 2,
+    "status_mismatch_count": 1,
+    "fully_reconciled_count": 5
+}

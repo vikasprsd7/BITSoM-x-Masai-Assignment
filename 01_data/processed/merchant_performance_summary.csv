@@ -1,0 +1,6 @@
+merchant_name,merchant_category,account_manager,total_txns,captured_usd,chargeback_rate,avg_risk
+Alpha Mart,Grocery,Aisha Khan,11,29984.5,9,61
+Beta Stores,Electronics,Rohan Mehta,11,33431,9,69
+City Pharma,Healthcare,Elena Rossi,2,8640,0,40
+Delta Travels,Travel,Marcus Lee,4,10300,25,49
+Eco Home,Home,Nina Weber,2,0,50,55

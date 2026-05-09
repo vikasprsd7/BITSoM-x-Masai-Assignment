@@ -1,0 +1,5 @@
+payment_method,transaction_count,total_volume_usd,avg_risk_score
+Card,13,52972,61
+NetBanking,3,15306,63
+UPI,9,34398,62
+Wallet,5,13405,55
